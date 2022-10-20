@@ -5,7 +5,6 @@ from urllib.parse import urlparse
 
 
 app = Flask(__name__)
-DATABASE_URL = postgres://vjnlwhwwpapkra:808600f376cc3c4efe8176d44786f56a73f6ecd73eb37b3d1709efedbb64be57@ec2-54-158-247-210.compute-1.amazonaws.com:5432/d2n0pg84ihotrn
 
 def get_db_connection():
     result = urlparse(os.environ['DATABASE_URL'])
