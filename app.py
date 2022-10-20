@@ -5,7 +5,7 @@ from urllib.parse import urlparse
 
 
 app = Flask(__name__)
-
+DATABASE_URL = postgres://vjnlwhwwpapkra:808600f376cc3c4efe8176d44786f56a73f6ecd73eb37b3d1709efedbb64be57@ec2-54-158-247-210.compute-1.amazonaws.com:5432/d2n0pg84ihotrn
 
 def get_db_connection():
     result = urlparse(os.environ['DATABASE_URL'])
@@ -49,6 +49,14 @@ def hello_world():  # put application's code here
     cur.close()
     return render_template('index.html', version=db_version[0])
 
+def query(): #template for some query
+    conn = get_db_connection()
+    cur = conn.cursor()
+    cur.execute(('SELECT * FROM database;')) #insert query here
+    books = cur.fetchall() #fetches query and put into object
+    cur.close() #closes query
+    conn.close() #closes connection to db
+    return render_template('index.html', books=books)
 
 if __name__ == '__main__':
     app.run()
