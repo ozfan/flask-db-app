@@ -48,20 +48,20 @@ def hello_world():  # put application's code here
     cur.close()
     return render_template('index.html', version=db_version[0])
 
-''' @app.route('/query/', methods=["GET"])
+@app.route('/query/', methods=["GET"])
 def query(): #template for some query
-    if request.method == 'GET':
-        start_date = request.form['start']
-        end_date = request.form['end']
-        table = request.form['table']
-        Total = request.form['Total']
-        conn = get_db_connection()
-        cur = conn.cursor()
-        cur.execute(('SELECT  FROM ;')) #insert query here
-        tables = cur.fetchall() #fetches query and put into object
-        cur.close() #closes query
-        conn.close() #closes connection to db
-        return render_template('query.html', tables=books) '''
+    # if request.method == 'GET':
+    #     start_date = request.form['start']
+    #     end_date = request.form['end']
+    #     table = request.form['table']
+    #     Total = request.form['Total']
+    #     conn = get_db_connection()
+    #     cur = conn.cursor()
+    #     cur.execute(('SELECT  FROM ;')) #insert query here
+    #     tables = cur.fetchall() #fetches query and put into object
+    #     cur.close() #closes query
+    #     conn.close() #closes connection to db
+    return render_template('query.html', tables=books)
 
 if __name__ == '__main__':
     app.run()
