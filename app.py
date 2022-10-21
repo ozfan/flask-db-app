@@ -1,5 +1,6 @@
 import os
 import psycopg2
+import jinja2
 from flask import Flask, redirect, request, render_template, url_for
 from urllib.parse import urlparse
 
@@ -30,7 +31,7 @@ def all_routes(text):
         return render_template(text)
 
 
-@app.route('/')
+@app.route('/', methods=['GET'])
 def hello_world():  # put application's code here
     conn = get_db_connection()
     # create a cursor
@@ -48,20 +49,28 @@ def hello_world():  # put application's code here
     cur.close()
     return render_template('index.html', version=db_version[0])
 
-# @app.route('/query/', methods=["GET"])
-# def query(): #template for some query
-#     # if request.method == 'GET':
-#     #     start_date = request.form['start']
-#     #     end_date = request.form['end']
-#     #     table = request.form['table']
-#     #     Total = request.form['Total']
-#     #     conn = get_db_connection()
-#     #     cur = conn.cursor()
-#     #     cur.execute(('SELECT  FROM ;')) #insert query here
-#     #     tables = cur.fetchall() #fetches query and put into object
-#     #     cur.close() #closes query
-#     #     conn.close() #closes connection to db
-#     return render_template('query.html', tables=books)
+def index():
+    conn = get_db_connection()
+    cur = conn.cursor()
+    cur.execute('SELECT * FROM membership_dimension;')
+    members = cur.fetchall()
+    cur.close()
+    conn.close()
+    return render_template('index.html', members=members)
+
+def query(): #template for some query
+    if request.method == 'GET':
+        start_date = request.form['startDate']
+        end_date = request.form['endDate']
+        table = request.form['table']
+        sum_value = request.form['value']
+        conn = get_db_connection()
+        cur = conn.cursor()
+        cur.execute(('SELECT sum(sum_value) FROM table, date_dimension WHERE date BETWEEN startDate AND endDate;')) #insert query here
+        table = cur.fetchall() #fetches query and put into object
+        cur.close() #closes query
+        conn.close() #closes connection to db
+    return render_template('index.html', table=table)
 
 if __name__ == '__main__':
     app.run()
