@@ -73,10 +73,10 @@
           <button type="button" class="btn bg-gradient-primary w-100 mb-0">Query</button>
         </div>
         <h3>Members List</h3>
-        {% for member in members[0:10] %}
+        {% comment %} {% for member in members[0:10] %}
           <div class='members'>
             <p>Member ID:{{ member[1] }}, Name:{{ member[2] }}, Email:{{ member[6] }}</p>
-            {% endfor %}
+            {% endfor %} {% endcomment %}
           </div>
       </div>
     </div>
