@@ -31,7 +31,7 @@ def all_routes(text):
         return render_template(text)
 
 
-@app.route('/', methods=['GET'])
+@app.route('/')
 def hello_world():  # put application's code here
     conn = get_db_connection()
     # create a cursor
