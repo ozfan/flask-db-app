@@ -1,51 +1,79 @@
 <!DOCTYPE html>
 <html lang="en" itemscope itemtype="http://schema.org/WebPage">
-<header>
-  <div class="page-header min-vh-50" style="background-image: url(../../static/assets/img/theater.jpg)">
-    <span class="mask bg-dark opacity-8"></span>
+
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+  <link rel="apple-touch-icon" sizes="76x76" href="../../static/assets/img/apple-icon.png">
+  <link rel="icon" type="image/png" href="../../static/assets/img/favicon.png">
+  <!--     Fonts and icons     -->
+  <link href="https://fonts.googleapis.com/css?family=Montserrat:400,500,700,200|Open+Sans+Condensed:700" rel="stylesheet">
+  <!-- Nucleo Icons -->
+  <link href="../../static/assets/css/nucleo-icons.css" rel="stylesheet" />
+  <link href="../../static/assets/css/nucleo-svg.css" rel="stylesheet" />
+  <!-- Font Awesome Icons -->
+  <script src="https://kit.fontawesome.com/42d5adcbca.js" crossorigin="anonymous"></script>
+  <!-- CSS Files -->
+  <link id="pagestyle" href="../../static/assets/css/now-design-system-pro.css?v=2.2.0" rel="stylesheet" />
+</head>
+
+<body class="rental">
+  <!-- -------- START HEADER ------- -->
+  <header>
+    <div class="page-header min-vh-50" style="background-image: url(../../static/assets/img/theater.jpg)">
+      <span class="mask bg-dark opacity-8"></span>
+      <div class="container">
+        <div class="row">
+          <div class="col-lg-8 mx-auto text-white text-center">
+            <h2 class="text-white">Movie Theater Database Query</h2>
+            <p class="lead">Make queries to the movie theater database. Earliest entry is from September 1, 2022.</p>
+            <h2 class="text-white ">Using Postgres</h2>
+            <p class="lead text-white mt-3 font-weight-normal">{{ version }}</p>
+          </div>
+        </div>
+      </div>
+    </div>
     <div class="container">
-      <div class="row">
-        <div class="col-lg-8 mx-auto text-white text-center">
-          <h2 class="text-white">Movie Theater Database Query</h2>
-          <p class="lead">Query the database</p>
+      <div class="row bg-white shadow mt-n5 border-radius-lg pb-4 p-3 mx-sm-0 mx-1 position-relative">
+        <div class="col-lg-3 mt-lg-n2 mt-2">
+          <label for="table">Table</label>
+          <select class="form-control" name="table-choice" id="table-choice" placeholder="Query From Table">
+            <option value="member_dimension" selected="">Members</option>
+            <option value="film_dimension">Films</option>
+            <option value="promotion_dimension">Promotions</option>
+          </select>
+        </div>
+        <div class="col-lg-3 mt-lg-n2 mt-2">
+          <label for="value">Summary Value</label>
+          <select class="form-control" name="value-choice" id="value-choice" placeholder="Summary Value">
+            <option value="adult_seat">No. of Adult Tickets</option>
+            <option value="adult_amount_paid">Adults Ticket Sales</option>
+            <option value="kid_seat">No. of Children's Tickets</option>
+            <option value="kid_amount_paid">Children's Ticket Sales</option>
+            <option value="total_amount_paid">Total Ticket Sales</option>
+          </select>
+        </div>
+        <div class="col-lg-3 mt-lg-n2 mt-2">
+          <label for="startDate">Start Date</label>
+          <div class="input-group">
+            <span class="input-group-text"><i class="fas fa-calendar"></i></span>
+            <input class="form-control datepicker" value="" type="date" min="2022-09-01" max="2022-12-31">
+          </div>
+        </div>
+        <div class="col-lg-3 mt-lg-n2 mt-2">
+          <label for="endDate">End Date</label>
+          <div class="input-group">
+            <span class="input-group-text"><i class="fas fa-calendar"></i></span>
+            <input class="form-control datepicker" value="" type="date" min="2022-09-01" max="2022-12-31">
+          </div>
+        </div>
+        <div class="col-lg">
+          <label class="">&nbsp;</label>
+          <button type="button" class="btn bg-gradient-primary w-100 mb-0">Query</button>
         </div>
       </div>
     </div>
-  </div>
-
-  <div class="container">
-    <div class="row bg-white shadow mt-n5 border-radius-lg pb-4 p-3 mx-sm-0 mx-1 position-relative">
-      <div class="col-lg-3 mt-lg-n2 mt-2">
-        <label class="">Leave From</label>
-        <select class="form-control" name="choices-leave" id="choices-leave" placeholder="Departure">
-          <option value="Choice 1" selected="">Brazil</option>
-          <option value="Choice 2">Bucharest</option>
-          <option value="Choice 3">London</option>
-          <option value="Choice 4">USA</option>
-        </select>
-      </div>
-      <div class="col-lg-3 mt-lg-n2 mt-2">
-        <label class="">To</label>
-        <select class="form-control" name="choices-to" id="choices-to" placeholder="Destination">
-          <option value="Choice 1" selected="">Italy</option>
-          <option value="Choice 2">Spain</option>
-          <option value="Choice 3">Denmark</option>
-          <option value="Choice 4">Poland</option>
-        </select>
-      </div>
-      <div class="col-lg-3 mt-lg-n2 mt-2">
-        <label class="">Depart</label>
-
-        <div class="input-group">
-          <span class="input-group-text"><i class="fas fa-calendar"></i></span>
-          <input class="form-control datepicker" placeholder="Please select date" type="text" >
-        </div>
-
-      </div>
-      <div class="col-lg-3 mt-lg-n2 mt-2">
-        <label class="">&nbsp;</label>
-        <button type="button" class="btn bg-gradient-primary w-100 mb-0">Search</button>
-      </div>
-    </div>
-  </div>
-</header>
+  </header>
+  <!-- -------- END HEADER 4 w/ search book a ticket form ------- -->
+ </body>
+</html>
