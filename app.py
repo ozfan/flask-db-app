@@ -25,10 +25,10 @@ def get_db_connection():
     return connection
 
 
-@app.route('/<path:text>', methods=['GET', 'POST'])
-def all_routes(text):
-    if text.startswith('pages') or text.startswith('sections'):
-        return render_template(text)
+# @app.route('/<path:text>', methods=['GET', 'POST'])
+# def all_routes(text):
+#     if text.startswith('pages') or text.startswith('sections'):
+#         return render_template(text)
 
 
 @app.route('/')
