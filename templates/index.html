@@ -44,11 +44,28 @@
             <option value="October">October</option>
             <option value="Month_All">All</option>
           </select>
-          <ul id="navigation">
-            {% for item in sales_dow %}
-                <li><a>{{ item[0] }}</a></li>
-            {% endfor %}
-            </ul>
+            <table id="sales_dow_table">
+              <tr>
+                <th>Weekday</th>
+                <th>Total_Sales</th>
+                <th>Adult_Sales</th>
+                <th>Kid_Sales</th>
+                <th>Total_Attendance</th>
+                <th>Adults_Attendance</th>
+                <th>Kid_Attendance</th>
+              </tr>
+              {% for item in sales_dow %}
+                  <tr>
+                      <td><a>{{ item[0] }}</a></td>
+                      <td><a>{{ item[1] }}</a></td>
+                      <td><a>{{ item[2] }}</a></td>
+                      <td><a>{{ item[3] }}</a></td>
+                      <td><a>{{ item[4] }}</a></td>
+                      <td><a>{{ item[5] }}</a></td>
+                    <td><a>{{ item[6] }}</a></td>
+                  </tr>
+              {% endfor %}
+            </table>
         </div>
         </div>
         <div class="col-lg">
@@ -59,6 +76,7 @@
       </div>
     </div>
   </section>
+</form>
   <section class="py-6">
     <div class="row bg-white shadow mt-n5 border-radius-lg pb-4 p-3 mx-sm-0 mx-1 position-relative">
       <div class="col-lg-3 mt-lg-n2 mt-2">
@@ -68,6 +86,30 @@
           <option value="October">October</option>
           <option value="Month_All">All</option>
         </select>
+        <table id="sales_by_film_table">
+          <tr>
+            <th>Film_Name</th>
+            <th>Genre</th>
+            <th>Total_Sales</th>
+            <th>Adults_Sales</th>
+            <th>Kid_Sales</th>
+            <th>Total_Attendance</th>
+            <th>Adults_Attendance</th>
+            <th>Kid_Attendance</th>
+          </tr>
+          {% for item in sales_by_film %}
+               <tr>
+                  <td><a>{{ item[0] }}</a></td>
+                  <td><a>{{ item[1] }}</a></td>
+                  <td><a>{{ item[2] }}</a></td>
+                  <td><a>{{ item[3] }}</a></td>
+                  <td><a>{{ item[4] }}</a></td>
+                  <td><a>{{ item[5] }}</a></td>
+                  <td><a>{{ item[6] }}</a></td>
+                  <td><a>{{ item[7] }}</a></td>
+               </tr>
+          {% endfor %}
+        </table>
       </div>
       </div>
       <div class="col-lg">
@@ -78,20 +120,39 @@
     </div>
   </div>
 </section>
+<form method="post" action="/">
 <section class="py-7">
   <div class="row bg-white shadow mt-n5 border-radius-lg pb-4 p-3 mx-sm-0 mx-1 position-relative">
     <div class="col-lg-3 mt-lg-n2 mt-2">
       <label for="table">Return on Investment by Film</label>
     </div>
     </div>
-    <div class="col-lg">
-      <label class="">&nbsp;</label>
-      <button type="button" class="btn bg-gradient-primary w-100 mb-0">Query</button>
-    </div>
+    <table id="film_roi_table">
+      <tr>
+        <th>Film_Name</th>
+        <th>Genre</th>
+        <th>Cumulative_Sales</th>
+        <th>Procurement_Cost</th>
+        <th>Profit</th>
+        <th>ROI</th>
+      </tr>
+      {% for item in film_roi %}
+           <tr>
+              <td><a>{{ item[0] }}</a></td>
+              <td><a>{{ item[1] }}</a></td>
+              <td><a>{{ item[2] }}</a></td>
+              <td><a>{{ item[3] }}</a></td>
+              <td><a>{{ item[4] }}</a></td>
+              <td><a>{{ item[5] }}</a></td>
+           </tr>
+      {% endfor %}
+    </table>
       </div>
   </div>
 </div>
 </section>
+</form>
+<form method="post" action="/">
 <section class="py-7">
   <div class="row bg-white shadow mt-n5 border-radius-lg pb-4 p-3 mx-sm-0 mx-1 position-relative">
     <div class="col-lg-3 mt-lg-n2 mt-2">
@@ -101,6 +162,26 @@
         <option value="October">October</option>
         <option value="Month_All">All</option>
       </select>
+      <table id="promo_roi_table">
+        <tr>
+          <th>Planner</th>
+          <th>Promotion_Name</th>
+          <th>Promo_Sales</th>
+          <th>Promo_Costs</th>
+          <th>Profit</th>
+          <th>ROI</th>
+        </tr>
+        {% for item in promo_roi %}
+             <tr>
+                <td><a>{{ item[0] }}</a></td>
+                <td><a>{{ item[1] }}</a></td>
+                <td><a>{{ item[2] }}</a></td>
+                <td><a>{{ item[3] }}</a></td>
+                <td><a>{{ item[4] }}</a></td>
+                <td><a>{{ item[5] }}</a></td>
+              </tr>
+        {% endfor %}
+      </table>
     </div>
     </div>
     <div class="col-lg">
@@ -111,6 +192,8 @@
   </div>
 </div>
 </section>
+</form>
+<form method="post" action="/">
 <section class="py-7">
   <div class="row bg-white shadow mt-n5 border-radius-lg pb-4 p-3 mx-sm-0 mx-1 position-relative">
     <div class="col-lg-3 mt-lg-n2 mt-2">
@@ -120,6 +203,22 @@
         <option value="October">October</option>
         <option value="Month_All">All</option>
       </select>
+      <table id="pop_promo_table">
+        <tr>
+          <th>Age</th>
+          <th>Gender</th>
+          <th>Planner</th>
+          <th>Promotion_Name</th>
+          <th>Total_Redemption</th>
+        </tr>
+        {% for item in pop_promo %}
+        <td><a>{{ item[0] }}</a></td>
+        <td><a>{{ item[1] }}</a></td>
+        <td><a>{{ item[2] }}</a></td>
+        <td><a>{{ item[3] }}</a></td>
+        <td><a>{{ item[4] }}</a></td>
+        {% endfor %}
+      </table>
     </div>
     </div>
     <div class="col-lg">
