@@ -7,6 +7,7 @@ from urllib.parse import urlparse
 
 app = Flask(__name__)
 
+
 def get_db_connection():
     result = urlparse(os.environ['DATABASE_URL'])
     username = result.username

@@ -34,49 +34,105 @@
       </div>
     </div>
     <div class="container">
-      <form method="post" action="/">
-        <section class="py-6">
-      <div class="row bg-white shadow mt-n5 border-radius-lg pb-4 p-3 mx-sm-0 mx-1 position-relative">
-        <div class="col-lg-3 mt-lg-n2 mt-2">
-          <label for="table">Sales and Attendance by Day of Week</label>
-          <select class="form-control" name="table-choice" id="table-choice" placeholder="Query From Table">
-            <option value="September" selected="">September</option>
-            <option value="October">October</option>
-            <option value="Month_All">All</option>
-          </select>
-            <table id="sales_dow_table">
-              <tr>
-                <th>Weekday</th>
-                <th>Total_Sales</th>
-                <th>Adult_Sales</th>
-                <th>Kid_Sales</th>
-                <th>Total_Attendance</th>
-                <th>Adults_Attendance</th>
-                <th>Kid_Attendance</th>
-              </tr>
-              {% for item in sales_dow %}
-                  <tr>
-                      <td><a>{{ item[0] }}</a></td>
-                      <td><a>{{ item[1] }}</a></td>
-                      <td><a>{{ item[2] }}</a></td>
-                      <td><a>{{ item[3] }}</a></td>
-                      <td><a>{{ item[4] }}</a></td>
-                      <td><a>{{ item[5] }}</a></td>
-                    <td><a>{{ item[6] }}</a></td>
-                  </tr>
-              {% endfor %}
-            </table>
-        </div>
-        </div>
-        <div class="col-lg">
-          <label class="">&nbsp;</label>
-          <button type="submit" class="btn bg-gradient-primary w-100 mb-0">Query</button>
-        </div>
-          </div>
+        <form method="post" action="/">
+            <section class="py-6">
+                <div class="row bg-white shadow mt-n5 border-radius-lg pb-4 p-3 mx-sm-0 mx-1 position-relative">
+                    <div class="col-lg-3 mt-lg-n2 mt-2">
+                        <label for="table">Sales and Attendance by Day of Week</label>
+                        <select class="form-control" name="table-choice" id="table-choice" placeholder="Query From Table">
+                            <option value="September" selected="">September</option>
+                            <option value="October">October</option>
+                            <option value="Month_All">All</option>
+                        </select>
+{#                        <table id="sales_dow_table">#}
+{#                      <tr>#}
+{#                        <th>Weekday</th>#}
+{#                        <th>Total_Sales</th>#}
+{#                        <th>Adult_Sales</th>#}
+{#                        <th>Kid_Sales</th>#}
+{#                        <th>Total_Attendance</th>#}
+{#                        <th>Adults_Attendance</th>#}
+{#                        <th>Kid_Attendance</th>#}
+{#                      </tr>#}
+{#                      {% for item in sales_dow %}#}
+{#                          <tr>#}
+{#                              <td><a>{{ item[0] }}</a></td>#}
+{#                              <td><a>{{ item[1] }}</a></td>#}
+{#                              <td><a>{{ item[2] }}</a></td>#}
+{#                              <td><a>{{ item[3] }}</a></td>#}
+{#                              <td><a>{{ item[4] }}</a></td>#}
+{#                              <td><a>{{ item[5] }}</a></td>#}
+{#                            <td><a>{{ item[6] }}</a></td>#}
+{#                          </tr>#}
+{#                      {% endfor %}#}
+{#                    </table>#}
+                    </div>
+                </div>
+                <div class="col-lg">
+                    <label class="">&nbsp;</label>
+                    <button type="submit" class="btn bg-gradient-primary w-100 mb-0">Query</button>
+                </div>
+            </section>
+            <section class="pt-1 mt-1">
+              <div class="container">
+                <div class="row justify-content-center">
+                  <div class="col-lg-12">
+                    <div class="card">
+                      <div class="table-responsive">
+                        <table class="table align-items-center mb-0">
+                          <thead>
+                            <tr>
+                              <th class="text-uppercase text-secondary text-xxs font-weight-bolder opacity-7">Weekday</th>
+                              <th class="text-uppercase text-secondary text-xxs font-weight-bolder opacity-7 ps-2">Total_Sales</th>
+                              <th class="text-center text-uppercase text-secondary text-xxs font-weight-bolder opacity-7">Adult_Sales</th>
+                              <th class="text-center text-uppercase text-secondary text-xxs font-weight-bolder opacity-7">Kid_Sales</th>
+                              <th class="text-center text-uppercase text-secondary text-xxs font-weight-bolder opacity-7">Total_Attendance</th>
+                              <th class="text-center text-uppercase text-secondary text-xxs font-weight-bolder opacity-7">Adults_Attendance</th>
+                              <th class="text-center text-uppercase text-secondary text-xxs font-weight-bolder opacity-7">Kid_Attendance</th>
+                              <th class="text-secondary opacity-7"></th>
+                            </tr>
+                          </thead>
+                          <tbody>
+                              {% for item in sales_dow %}
+                                  <tr>
+                                      <td class="align-middle text-center text-sm">
+                                        <div class="d-flex px-2 py-1">
+                                            <h6 class="mb-0 text-xs">{{ item[0] }}</h6>
+                                        </div>
+                                      </td>
+                                      <td class="align-middle text-center text-sm">
+                                          <p class="text-xs font-weight-bold mb-0">{{ item[1] }}</p>
+                                      </td>
+                                      <td class="align-middle text-center text-sm">
+                                          <p class="text-xs font-weight-bold mb-0">{{ item[2] }}</p>
+                                      </td>
+                                      <td class="align-middle text-center text-sm">
+                                          <p class="text-xs font-weight-bold mb-0">{{ item[3] }}</p>
+                                      </td>
+                                      <td class="align-middle text-center text-sm">
+                                          <p class="text-xs font-weight-bold mb-0">{{ item[4] }}</p>
+                                      </td>
+                                      <td class="align-middle text-center text-sm">
+                                          <p class="text-xs font-weight-bold mb-0">{{ item[5] }}</p>
+                                      </td>
+                                      <td class="align-middle text-center text-sm">
+                                          <p class="text-xs font-weight-bold mb-0">{{ item[6] }}</p>
+                                      </td>
+                                      <td class="align-middle text-center text-sm">
+                                          <p class="text-xs font-weight-bold mb-0">{{ item[7] }}</p>
+                                      </td>
+                                  </tr>
+                              {% endfor %}
+                          </tbody>
+                        </table>
+                      </div>
+                    </div>
+                  </div>
+                </div>
+              </div>
+            </section>
+        </form>
       </div>
-    </div>
-  </section>
-</form>
   <section class="py-6">
     <div class="row bg-white shadow mt-n5 border-radius-lg pb-4 p-3 mx-sm-0 mx-1 position-relative">
       <div class="col-lg-3 mt-lg-n2 mt-2">
