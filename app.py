@@ -6,7 +6,7 @@ from urllib.parse import urlparse
 
 
 app = Flask(__name__)
-app.secret_key = 'my sexy Ivan'
+app.secret_key = 'I Love Databases'
 
 
 def get_db_connection():
