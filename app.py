@@ -1,11 +1,12 @@
 import os
 import psycopg2
 import jinja2
-from flask import Flask, redirect, request, render_template, url_for
+from flask import Flask, redirect, request, render_template, url_for, session, flash
 from urllib.parse import urlparse
 
 
 app = Flask(__name__)
+app.secret_key = 'my sexy Ivan'
 
 
 def get_db_connection():
@@ -31,6 +32,7 @@ def all_routes(text):
     if text.startswith('pages') or text.startswith('sections'):
         return render_template(text)
 
+
 @app.route('/', methods=['GET'])
 def hello_world():  # put application's code here
     conn = get_db_connection()
@@ -41,13 +43,13 @@ def hello_world():  # put application's code here
     print('PostgreSQL database version:')
     cur.execute('SELECT version()')
     # display the PostgreSQL database server version
-    db_version = cur.fetchone()
+    session["db_version"] = cur.fetchone()[0]
     #Sales and Attendance by Day of Week Section Display
     cur.execute("""SELECT d.weekday, sum(t.total_amount_paid) total_sales, sum(t.adult_amount_paid) adult_sales, sum(t.kid_amount_paid) kid_sales, sum(t.adult_seat + t.kid_seat) total_attendance, sum(t.adult_seat) adults_attendance, sum(t.kid_seat) kid_attendance 
                 FROM transaction_fact t, date_dimension d 
                 WHERE t.date_key = d.date_key and extract(month from d.date) = 9 
                 GROUP BY d.weekday ORDER BY total_sales DESC;""")
-    sales_dow = cur.fetchall()
+    session["sales_dow"] = cur.fetchall()
     
     #Sales and Attendance by Film Section Display
     cur.execute("""SELECT f.film_name, f.genre, sum(t.total_amount_paid) total_sales, sum(t.adult_amount_paid) adult_sales, 
@@ -96,7 +98,12 @@ def hello_world():  # put application's code here
 
     # close the communication with the PostgreSQL
     cur.close()
-    return render_template('index.html', version=db_version[0], sales_dow=sales_dow, sales_by_film=sales_by_film, film_roi=film_roi, promo_roi=promo_roi, pop_promo=pop_promo)
+    return render_template('index.html', version=session["db_version"],
+                           sales_dow=session.get("sales_dow"),
+                           sales_by_film=session.get("sales_by_film"),
+                           film_roi=session.get("film_roi"),
+                           promo_roi=session.get("promo_roi"),
+                           pop_promo=session.get("pop_promo"))
 
 # def index():
 #     conn = get_db_connection()
@@ -108,10 +115,10 @@ def hello_world():  # put application's code here
 #     return render_template('index.html', members=members)
 
 
-@app.route('/', methods=['POST'])
+@app.route('/sales_dow', methods=['POST'])
 def query_sales_dow(): #template for some query
     if request.method == 'POST':
-        Month_choice = request.form
+        Month_choice = request.form.get('table-choice')
         print(Month_choice)
         conn = get_db_connection()
         cur = conn.cursor()
@@ -139,8 +146,14 @@ def query_sales_dow(): #template for some query
 
         cur.close() #closes query
         conn.close() #closes connection to db
-    return render_template('index.html', table=table)
+    return render_template('index.html', version=session["db_version"],
+                           sales_dow=session.get("sales_dow"),
+                           sales_by_film=session.get("sales_by_film"),
+                           film_roi=session.get("film_roi"),
+                           promo_roi=session.get("promo_roi"),
+                           pop_promo=session.get("pop_promo"))
 
+@app.route('/sales_by_film', methods=['POST'])
 def query_sales_by_film(): #template for some query
     if request.method == 'POST':
         Month_choice = request.form['table-choice']
