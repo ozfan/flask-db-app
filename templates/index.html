@@ -34,47 +34,102 @@
       </div>
     </div>
     <div class="container">
-      <form method="get">
+      <form method="post" action="/">
+        <section class="py-6">
       <div class="row bg-white shadow mt-n5 border-radius-lg pb-4 p-3 mx-sm-0 mx-1 position-relative">
         <div class="col-lg-3 mt-lg-n2 mt-2">
-          <label for="table">Table</label>
+          <label for="table">Sales and Attendance by Day of Week</label>
           <select class="form-control" name="table-choice" id="table-choice" placeholder="Query From Table">
-            <option value="member_dimension" selected="">Members</option>
-            <option value="film_dimension">Films</option>
-            <option value="promotion_dimension">Promotions</option>
+            <option value="September" selected="">September</option>
+            <option value="October">October</option>
+            <option value="Month_All">All</option>
           </select>
+          <ul id="navigation">
+            {% for item in sales_dow %}
+                <li><a>{{ item[0] }}</a></li>
+            {% endfor %}
+            </ul>
         </div>
-        <div class="col-lg-3 mt-lg-n2 mt-2">
-          <label for="value">Summary Value</label>
-          <select class="form-control" name="value-choice" id="value-choice" placeholder="Summary Value">
-            <option value="adult_seat">No. of Adult Tickets</option>
-            <option value="adult_amount_paid">Adults Ticket Sales</option>
-            <option value="kid_seat">No. of Children's Tickets</option>
-            <option value="kid_amount_paid">Children's Ticket Sales</option>
-            <option value="total_amount_paid">Total Ticket Sales</option>
-          </select>
-        </div>
-        <div class="col-lg-3 mt-lg-n2 mt-2">
-          <label for="startDate">Start Date</label>
-          <div class="input-group">
-            <span class="input-group-text"><i class="fas fa-calendar"></i></span>
-            <input class="form-control datepicker" value="" type="date" min="2022-09-01" max="2022-12-31">
-          </div>
-        </div>
-        <div class="col-lg-3 mt-lg-n2 mt-2">
-          <label for="endDate">End Date</label>
-          <div class="input-group">
-            <span class="input-group-text"><i class="fas fa-calendar"></i></span>
-            <input class="form-control datepicker" value="" type="date" min="2022-09-01" max="2022-12-31">
-          </div>
         </div>
         <div class="col-lg">
           <label class="">&nbsp;</label>
-          <button type="button" class="btn bg-gradient-primary w-100 mb-0">Query</button>
+          <button type="submit" class="btn bg-gradient-primary w-100 mb-0">Query</button>
         </div>
           </div>
       </div>
     </div>
+  </section>
+  <section class="py-6">
+    <div class="row bg-white shadow mt-n5 border-radius-lg pb-4 p-3 mx-sm-0 mx-1 position-relative">
+      <div class="col-lg-3 mt-lg-n2 mt-2">
+        <label for="table">Sales and Attendance by Film</label>
+        <select class="form-control" name="table-choice" id="table-choice" placeholder="Query From Table">
+          <option value="September" selected="">September</option>
+          <option value="October">October</option>
+          <option value="Month_All">All</option>
+        </select>
+      </div>
+      </div>
+      <div class="col-lg">
+        <label class="">&nbsp;</label>
+        <button type="button" class="btn bg-gradient-primary w-100 mb-0">Query</button>
+      </div>
+        </div>
+    </div>
+  </div>
+</section>
+<section class="py-7">
+  <div class="row bg-white shadow mt-n5 border-radius-lg pb-4 p-3 mx-sm-0 mx-1 position-relative">
+    <div class="col-lg-3 mt-lg-n2 mt-2">
+      <label for="table">Return on Investment by Film</label>
+    </div>
+    </div>
+    <div class="col-lg">
+      <label class="">&nbsp;</label>
+      <button type="button" class="btn bg-gradient-primary w-100 mb-0">Query</button>
+    </div>
+      </div>
+  </div>
+</div>
+</section>
+<section class="py-7">
+  <div class="row bg-white shadow mt-n5 border-radius-lg pb-4 p-3 mx-sm-0 mx-1 position-relative">
+    <div class="col-lg-3 mt-lg-n2 mt-2">
+      <label for="table">Return on Investment by Promotion</label>
+      <select class="form-control" name="table-choice" id="table-choice" placeholder="Query From Table">
+        <option value="September" selected="">September</option>
+        <option value="October">October</option>
+        <option value="Month_All">All</option>
+      </select>
+    </div>
+    </div>
+    <div class="col-lg">
+      <label class="">&nbsp;</label>
+      <button type="button" class="btn bg-gradient-primary w-100 mb-0">Query</button>
+    </div>
+      </div>
+  </div>
+</div>
+</section>
+<section class="py-7">
+  <div class="row bg-white shadow mt-n5 border-radius-lg pb-4 p-3 mx-sm-0 mx-1 position-relative">
+    <div class="col-lg-3 mt-lg-n2 mt-2">
+      <label for="table">Most Popular Promotion by Member’s Age and Gender</label>
+      <select class="form-control" name="table-choice" id="table-choice" placeholder="Query From Table">
+        <option value="September" selected="">September</option>
+        <option value="October">October</option>
+        <option value="Month_All">All</option>
+      </select>
+    </div>
+    </div>
+    <div class="col-lg">
+      <label class="">&nbsp;</label>
+      <button type="button" class="btn bg-gradient-primary w-100 mb-0">Query</button>
+    </div>
+      </div>
+  </div>
+</div>
+</section>
   </form>
   </header>
   <!-- -------- END HEADER 4 w/ search book a ticket form ------- -->
